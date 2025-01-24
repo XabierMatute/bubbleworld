@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -400.0
+@export var bubble_speed = 1.0 / 4
+
 var air = 1
 
 func _process(delta: float) -> void:
@@ -12,6 +14,11 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 	else:
 		$AnimatedSprite2D.stop()
+	
+	$Bubble.scale -= Vector2(delta * bubble_speed, delta * bubble_speed)
+	if $Bubble.scale.x < 0 or $Bubble.scale.y < 0:
+		$Bubble.scale = Vector2(0,0)
+		emit_signal("popped")
 
 
 func _physics_process(delta: float) -> void:

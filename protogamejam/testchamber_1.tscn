@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dcfpr5h6neam3" path="res://player.tscn" id="1_8yvxc"]
 [ext_resource type="Texture2D" uid="uid://cgl0y6t4a1ji" path="res://placeholders/YM.png" id="2_226bd"]
-[ext_resource type="PackedScene" uid="uid://ectp13lfeba2" path="res://bubble.tscn" id="2_r57fl"]
+[ext_resource type="PackedScene" uid="uid://dneep5u6jeulg" path="res://placeholders/YMwall.tscn" id="4_h3yvn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tto36"]
 size = Vector2(866, 101)
@@ -11,10 +11,9 @@ size = Vector2(866, 101)
 position = Vector2(579, 338)
 
 [node name="player" parent="." instance=ExtResource("1_8yvxc")]
+position = Vector2(1, 0)
 SPEED = 600.0
 JUMP_VELOCITY = -800.0
-
-[node name="Bubble" parent="player" instance=ExtResource("2_r57fl")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -26,3 +25,9 @@ shape = SubResource("RectangleShape2D_tto36")
 position = Vector2(12, 226)
 scale = Vector2(4.40221, -0.544951)
 texture = ExtResource("2_226bd")
+
+[node name="YMwall" parent="." instance=ExtResource("4_h3yvn")]
+position = Vector2(328, -71)
+
+[node name="YMwall2" parent="." instance=ExtResource("4_h3yvn")]
+position = Vector2(-272, 147)

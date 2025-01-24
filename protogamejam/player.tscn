@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcfpr5h6neam3"]
+[gd_scene load_steps=8 format=3 uid="uid://dcfpr5h6neam3"]
 
 [ext_resource type="Texture2D" uid="uid://bs75oebvxkwjy" path="res://placeholders/playerGrey_walk1.png" id="1_63gth"]
 [ext_resource type="Script" path="res://player.gd" id="1_t4wjq"]
 [ext_resource type="Texture2D" uid="uid://btbh441gngkcr" path="res://placeholders/playerGrey_walk2.png" id="2_hu0ij"]
+[ext_resource type="Texture2D" uid="uid://dar5br35fx3x6" path="res://placeholders/ballBlue_10.png" id="4_775sq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1oovi"]
 size = Vector2(108, 132)
@@ -21,7 +22,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qo8mw"]
+radius = 74.4312
+
 [node name="player" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_t4wjq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -33,3 +38,11 @@ sprite_frames = SubResource("SpriteFrames_lqwtf")
 animation = &"walk"
 
 [node name="PlatformDetector" type="RayCast2D" parent="."]
+
+[node name="Bubble" type="CollisionShape2D" parent="."]
+position = Vector2(0, -76)
+shape = SubResource("CircleShape2D_qo8mw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bubble"]
+position = Vector2(0, 1)
+texture = ExtResource("4_775sq")
