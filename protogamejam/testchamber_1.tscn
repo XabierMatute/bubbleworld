@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://byettfnhrmc5v"]
+[gd_scene load_steps=6 format=3 uid="uid://byettfnhrmc5v"]
 
 [ext_resource type="PackedScene" uid="uid://dcfpr5h6neam3" path="res://player.tscn" id="1_8yvxc"]
 [ext_resource type="Texture2D" uid="uid://cgl0y6t4a1ji" path="res://placeholders/YM.png" id="2_226bd"]
+[ext_resource type="Script" path="res://label.gd" id="2_j4apt"]
 [ext_resource type="PackedScene" uid="uid://dneep5u6jeulg" path="res://placeholders/YMwall.tscn" id="4_h3yvn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tto36"]
@@ -12,8 +13,14 @@ position = Vector2(579, 338)
 
 [node name="player" parent="." instance=ExtResource("1_8yvxc")]
 position = Vector2(1, 0)
-SPEED = 600.0
-JUMP_VELOCITY = -800.0
+motion_mode = 0
+
+[node name="Label" type="Label" parent="player"]
+offset_left = -17.0
+offset_top = -95.0
+offset_right = 23.0
+offset_bottom = -72.0
+script = ExtResource("2_j4apt")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
