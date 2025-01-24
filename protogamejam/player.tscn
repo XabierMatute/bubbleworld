@@ -49,7 +49,7 @@ shape = SubResource("RectangleShape2D_1oovi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lqwtf")
-animation = &"swim"
+animation = &"walk"
 
 [node name="PlatformDetector" type="RayCast2D" parent="."]
 
@@ -60,3 +60,8 @@ shape = SubResource("CircleShape2D_qo8mw")
 [node name="Sprite2D" type="Sprite2D" parent="Bubble"]
 position = Vector2(0, 1)
 texture = ExtResource("4_775sq")
+
+[node name="DashParticles" type="CPUParticles2D" parent="."]
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 128.0

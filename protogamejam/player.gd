@@ -44,6 +44,7 @@ func _process(delta: float) -> void:
 		air = 111
 	$Bubble.scale = Vector2(1 ,1) * (get_bubble_percentage())
 
+@export var dash = 400
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -56,17 +57,20 @@ func _physics_process(delta: float) -> void:
 		#velocity += velocity / 2
 		
 
-	# Handle jump.
+	## Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		jump_air_cosumption = base_jump_air_cosumption
 		air -= jump_air_cosumption
+	#
+	## Handle double jump??	
+	#if Input.is_action_just_pressed("ui_accept") and not is_on_floor():
+		#velocity.y = JUMP_VELOCITY
+		#jump_air_cosumption += jump_air_cosumption_increment
+		#air -= jump_air_cosumption
+		
+
 	
-	# Handle double jump??	
-	if Input.is_action_just_pressed("ui_accept") and not is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		jump_air_cosumption += jump_air_cosumption_increment
-		air -= jump_air_cosumption
 		
 
 	# Get the input direction and handle the movement/deceleration.
@@ -81,5 +85,27 @@ func _physics_process(delta: float) -> void:
 		#velocity.y += direction * SPEED/100
 	#else:
 		#velocity.y += move_toward(velocity.y, 0, SPEED)
+
+		# Handdle dash
+	#if Input.is_action_just_pressed("ui_accept") and not is_on_floor():
+		#var xdirection := Input.get_axis("ui_left", "ui_right") #TODO: mirar controles de joystick
+		#var ydirection := Input.get_axis("ui_left", "ui_right")
+		#print("dash", velocity)
+		#velocity += Vector2(xdirection, ydirection).normalized() * dash
+		#print(velocity)
+	if Input.is_action_just_pressed("ui_accept") and not is_on_floor():
+		var xdirection := Input.get_axis("ui_left", "ui_right")  # Movimiento en eje X
+		var ydirection := Input.get_axis("ui_up", "ui_down")    # Movimiento en eje Y (joystick o teclado)
+
+		if xdirection != 0 or ydirection != 0:  # Solo aplica dash si hay entrada de movimiento
+			var dash_vector = Vector2(xdirection, ydirection).normalized() * dash
+			velocity = dash_vector # Añade el dash a la velocidad actual
+			print("Dash vector:", dash_vector, "New velocity:", velocity)
+			
+			# Activar partículas
+			$DashParticles.global_position = global_position  # Posiciona las partículas en el personaje
+			$DashParticles.emitting = true
+
+			print("Dash vector:", dash_vector, "New velocity:", velocity)
 
 	move_and_slide()
