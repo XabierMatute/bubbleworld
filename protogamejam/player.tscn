@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcfpr5h6neam3"]
+
+[ext_resource type="Texture2D" uid="uid://bs75oebvxkwjy" path="res://placeholders/playerGrey_walk1.png" id="1_63gth"]
+[ext_resource type="Script" path="res://player.gd" id="1_t4wjq"]
+[ext_resource type="Texture2D" uid="uid://btbh441gngkcr" path="res://placeholders/playerGrey_walk2.png" id="2_hu0ij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oovi"]
+size = Vector2(108, 132)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lqwtf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_63gth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hu0ij")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_t4wjq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_1oovi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lqwtf")
+animation = &"walk"
+
+[node name="PlatformDetector" type="RayCast2D" parent="."]
