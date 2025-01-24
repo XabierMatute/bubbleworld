@@ -38,3 +38,30 @@ position = Vector2(328, -71)
 
 [node name="YMwall2" parent="." instance=ExtResource("4_h3yvn")]
 position = Vector2(-272, 147)
+
+[node name="YMwall3" parent="." instance=ExtResource("4_h3yvn")]
+position = Vector2(482, -440)
+scale = Vector2(28.56, 0.960001)
+
+[node name="YMwall4" parent="." instance=ExtResource("4_h3yvn")]
+position = Vector2(701, 570)
+
+[node name="YMwall5" parent="." instance=ExtResource("4_h3yvn")]
+position = Vector2(-729, 1792)
+scale = Vector2(56.28, 1)
+
+[node name="YMwall6" parent="." instance=ExtResource("4_h3yvn")]
+position = Vector2(-833, -869)
+scale = Vector2(1, 40.44)
+
+[node name="YMwall7" parent="." instance=ExtResource("4_h3yvn")]
+position = Vector2(703, 1311)
+
+[node name="YMwall8" parent="." instance=ExtResource("4_h3yvn")]
+position = Vector2(1825, 686)
+
+[node name="YMwall9" parent="." instance=ExtResource("4_h3yvn")]
+position = Vector2(1391, 253)
+
+[node name="YMwall10" parent="." instance=ExtResource("4_h3yvn")]
+position = Vector2(1388, 1261)
