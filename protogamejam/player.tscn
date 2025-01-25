@@ -1,18 +1,36 @@
-[gd_scene load_steps=18 format=3 uid="uid://dcfpr5h6neam3"]
+[gd_scene load_steps=36 format=3 uid="uid://dcfpr5h6neam3"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_t4wjq"]
-[ext_resource type="Texture2D" uid="uid://dea51rsnxvofk" path="res://placeholders/enemySwimming_1.png" id="3_060qi"]
-[ext_resource type="Texture2D" uid="uid://dbefcp0st16ox" path="res://placeholders/enemySwimming_2.png" id="4_3fc6j"]
 [ext_resource type="Texture2D" uid="uid://dar5br35fx3x6" path="res://placeholders/ballBlue_10.png" id="4_775sq"]
 [ext_resource type="Texture2D" uid="uid://i61g2ktewqlm" path="res://art/player/idle/1.png" id="5_2ynes"]
 [ext_resource type="Texture2D" uid="uid://cxy0xii7frrqy" path="res://art/player/hit/1.png" id="5_y14i8"]
 [ext_resource type="Texture2D" uid="uid://b8cv2rlul1n8q" path="res://art/player/idle/2.png" id="6_j037p"]
 [ext_resource type="Texture2D" uid="uid://vi3v5jk74wf2" path="res://art/player/hit/2.png" id="6_jffqg"]
+[ext_resource type="Texture2D" uid="uid://coe6vfiyueklq" path="res://art/player/dash/1.png" id="7_esgnd"]
 [ext_resource type="Texture2D" uid="uid://bosomvrbd5nte" path="res://art/player/idle/3.png" id="7_q71tt"]
+[ext_resource type="Texture2D" uid="uid://bgn3m3edyivj" path="res://art/player/dash/2.png" id="8_g1vgy"]
 [ext_resource type="Texture2D" uid="uid://lv6c4253nr0d" path="res://art/player/idle/4.png" id="8_w0ge6"]
 [ext_resource type="Texture2D" uid="uid://svr0gtu2cobi" path="res://art/player/idle/5.png" id="9_5a7mh"]
+[ext_resource type="Texture2D" uid="uid://cavf7kv7o4nq3" path="res://art/player/dash/3.png" id="9_wjanv"]
+[ext_resource type="Texture2D" uid="uid://ds54586wqfqj2" path="res://art/player/dash/4.png" id="10_6lxa3"]
+[ext_resource type="Texture2D" uid="uid://c6xggohbv2sbn" path="res://art/player/dash/5.png" id="11_v47ut"]
+[ext_resource type="Texture2D" uid="uid://c165wk2hx6egb" path="res://art/player/dash/6.png" id="12_iyx1h"]
+[ext_resource type="Texture2D" uid="uid://bpxp6sev7xx6u" path="res://art/player/dash/7.png" id="13_0ujpq"]
+[ext_resource type="Texture2D" uid="uid://ccfhpkxfrc0xe" path="res://art/player/dash/8.png" id="14_ed8so"]
+[ext_resource type="Texture2D" uid="uid://bnsbwtpqnq4md" path="res://art/player/walk/1.png" id="14_ptqtp"]
 [ext_resource type="Script" path="res://gancho.gd" id="14_scwqi"]
+[ext_resource type="Texture2D" uid="uid://llrsb0iak5y" path="res://art/player/walk/2.png" id="15_pulop"]
 [ext_resource type="Texture2D" uid="uid://xrshk7g8baas" path="res://placeholders/gancho.jpg" id="15_temt4"]
+[ext_resource type="Texture2D" uid="uid://d4fkrs5dfp8y6" path="res://art/player/dash/9.png" id="15_vpiln"]
+[ext_resource type="Texture2D" uid="uid://dlqnb6ph8lmeo" path="res://art/player/dash/10.png" id="16_3cyny"]
+[ext_resource type="Texture2D" uid="uid://covu0577eox7i" path="res://art/player/walk/3.png" id="16_vns3s"]
+[ext_resource type="Texture2D" uid="uid://bjfp0cuuwf65o" path="res://art/player/walk/4.png" id="17_a2lk1"]
+[ext_resource type="Texture2D" uid="uid://cc0xrq3wc3kme" path="res://art/player/dash/11.png" id="17_j620p"]
+[ext_resource type="Texture2D" uid="uid://5oi2ylfats2f" path="res://art/player/walk/5.png" id="18_7rn2d"]
+[ext_resource type="Texture2D" uid="uid://fnymos8431" path="res://art/player/dash/12.png" id="18_fgoep"]
+[ext_resource type="Texture2D" uid="uid://bd1mqgtowwqj8" path="res://art/player/dash/13.png" id="19_5pydu"]
+[ext_resource type="Texture2D" uid="uid://14e84j7jv478" path="res://art/player/dash/14.png" id="20_n4w3m"]
+[ext_resource type="Texture2D" uid="uid://kwfnaskvads5" path="res://art/player/dash/15.png" id="21_34kkg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wd3bi"]
 radius = 128.813
@@ -24,13 +42,52 @@ radius = 74.4312
 [sub_resource type="SpriteFrames" id="SpriteFrames_lqwtf"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_060qi")
+"duration": 0.3,
+"texture": ExtResource("7_esgnd")
 }, {
-"duration": 1.0,
-"texture": ExtResource("4_3fc6j")
+"duration": 0.3,
+"texture": ExtResource("8_g1vgy")
+}, {
+"duration": 0.3,
+"texture": ExtResource("9_wjanv")
+}, {
+"duration": 0.3,
+"texture": ExtResource("10_6lxa3")
+}, {
+"duration": 0.3,
+"texture": ExtResource("11_v47ut")
+}, {
+"duration": 0.3,
+"texture": ExtResource("12_iyx1h")
+}, {
+"duration": 0.3,
+"texture": ExtResource("13_0ujpq")
+}, {
+"duration": 0.3,
+"texture": ExtResource("14_ed8so")
+}, {
+"duration": 0.3,
+"texture": ExtResource("15_vpiln")
+}, {
+"duration": 0.3,
+"texture": ExtResource("16_3cyny")
+}, {
+"duration": 0.3,
+"texture": ExtResource("17_j620p")
+}, {
+"duration": 0.3,
+"texture": ExtResource("18_fgoep")
+}, {
+"duration": 0.3,
+"texture": ExtResource("19_5pydu")
+}, {
+"duration": 0.3,
+"texture": ExtResource("20_n4w3m")
+}, {
+"duration": 0.3,
+"texture": ExtResource("21_34kkg")
 }],
-"loop": true,
+"loop": false,
 "name": &"dash",
 "speed": 5.0
 }, {
@@ -76,28 +133,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_2ynes")
+"texture": ExtResource("14_ptqtp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_j037p")
+"texture": ExtResource("15_pulop")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_q71tt")
+"texture": ExtResource("16_vns3s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_w0ge6")
+"texture": ExtResource("17_a2lk1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5a7mh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_w0ge6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_q71tt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_j037p")
+"texture": ExtResource("18_7rn2d")
 }],
 "loop": true,
 "name": &"walk",
@@ -112,6 +160,7 @@ collision_layer = 3
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_t4wjq")
+dash_velocity = 2000
 
 [node name="Gancho" type="RigidBody2D" parent="."]
 visible = false
@@ -142,10 +191,12 @@ texture = ExtResource("4_775sq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-11, -91)
-scale = Vector2(-0.3, 0.3)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_lqwtf")
-animation = &"walk"
+animation = &"dash"
 autoplay = "idle"
+frame = 14
+frame_progress = 1.0
 
 [node name="PlatformDetector" type="RayCast2D" parent="."]
 
@@ -155,7 +206,7 @@ emission_shape = 1
 emission_sphere_radius = 128.0
 
 [node name="DashTimer" type="Timer" parent="."]
-wait_time = 0.42
+wait_time = 591.371
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -167,5 +218,6 @@ one_shot = true
 
 [connection signal="body_entered" from="Gancho" to="Gancho" method="_on_body_entered"]
 [connection signal="body_shape_entered" from="Gancho" to="Gancho" method="_on_body_shape_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

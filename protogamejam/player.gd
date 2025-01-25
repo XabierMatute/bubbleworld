@@ -63,9 +63,14 @@ func get_hit(damage):
 	print("hothit")
 	if hitted:
 		return
+	if dashing:
+		return
 	$HitTimer.start()
 	air -= damage
 	hitted = true
+	
+func get_heal(heal):
+	air += heal
 
 func _process(delta: float) -> void:
 	handle_animation()
@@ -81,7 +86,6 @@ func _process(delta: float) -> void:
 	$Bubble.scale = Vector2(1 , 1) * get_bubble_stage()
 	#print($Bubble.scale)
 
-@export var dash = 400
 @export var gravity_scale = 0.42
 
 func get_player_gavity():
@@ -117,7 +121,7 @@ func _physics_process(delta: float) -> void:
 		air -= dash_air_cosumption
 	
 	if dashing:
-		print("dashing")
+		#print("dashing")
 		velocity.y = 0
 		if looking_left:
 			velocity.x = -dash_velocity
@@ -145,3 +149,10 @@ func _on_hit_timer_timeout() -> void:
 	print("ya no hit")
 	hitted = false
 	$AnimatedSprite2D.animation = "idle"
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	print("hola")
+	if not dashing:
+		return
+	_on_dash_timer_timeout()
