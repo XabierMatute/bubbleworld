@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddxte1d1x13k3"]
+
+[ext_resource type="Texture2D" uid="uid://cgl0y6t4a1ji" path="res://placeholders/YM.png" id="1_avuwf"]
+[ext_resource type="Script" path="res://placeholders/y_mwallreactive.gd" id="1_v880o"]
+[ext_resource type="Texture2D" uid="uid://dt0mbcxyu40s3" path="res://placeholders/cepillos.jpg" id="2_7kdjj"]
+[ext_resource type="Texture2D" uid="uid://kxyiyfasndl7" path="res://placeholders/dinosaurio.jpg" id="3_mvo4p"]
+[ext_resource type="Texture2D" uid="uid://cktvday7v5x2v" path="res://placeholders/paloma.jpg" id="4_xb7gg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fn15"]
+size = Vector2(3.04742, 4.0709)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3g73"]
+size = Vector2(220, 218)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76fmm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7kdjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_avuwf")
+}],
+"loop": true,
+"name": &"cepillos",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mvo4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_avuwf")
+}],
+"loop": true,
+"name": &"dinosaurio",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xb7gg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_avuwf")
+}],
+"loop": true,
+"name": &"paloma",
+"speed": 5.0
+}]
+
+[node name="YMwall" type="StaticBody2D"]
+collision_mask = 2
+script = ExtResource("1_v880o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_avuwf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.763593, 4.23193e-06)
+scale = Vector2(63.5052, -47.1814)
+shape = SubResource("RectangleShape2D_7fn15")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_g3g73")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(0, 0.500008)
+scale = Vector2(0.373957, 0.325)
+sprite_frames = SubResource("SpriteFrames_76fmm")
+animation = &"paloma"
+speed_scale = 0.5
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

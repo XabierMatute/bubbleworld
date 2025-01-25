@@ -16,6 +16,7 @@ script = ExtResource("1_t0h2f")
 [node name="player" parent="." instance=ExtResource("1_h07vp")]
 position = Vector2(1, 0)
 motion_mode = 0
+air_decrement = 5
 
 [node name="Label" type="Label" parent="player"]
 offset_left = -17.0
@@ -23,6 +24,8 @@ offset_top = -95.0
 offset_right = 23.0
 offset_bottom = -72.0
 script = ExtResource("2_xk8y4")
+
+[node name="Camera2D2" type="Camera2D" parent="player"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

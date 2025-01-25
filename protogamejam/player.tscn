@@ -1,17 +1,33 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcfpr5h6neam3"]
+[gd_scene load_steps=12 format=3 uid="uid://dcfpr5h6neam3"]
 
 [ext_resource type="Texture2D" uid="uid://bs75oebvxkwjy" path="res://placeholders/playerGrey_walk1.png" id="1_63gth"]
 [ext_resource type="Script" path="res://player.gd" id="1_t4wjq"]
 [ext_resource type="Texture2D" uid="uid://bu2bwonreucq1" path="res://placeholders/playerGrey_up1.png" id="2_d25by"]
 [ext_resource type="Texture2D" uid="uid://btbh441gngkcr" path="res://placeholders/playerGrey_walk2.png" id="2_hu0ij"]
+[ext_resource type="Texture2D" uid="uid://dea51rsnxvofk" path="res://placeholders/enemySwimming_1.png" id="3_060qi"]
 [ext_resource type="Texture2D" uid="uid://dblibjv7o34dw" path="res://placeholders/playerGrey_up2.png" id="3_ikxjg"]
+[ext_resource type="Texture2D" uid="uid://dbefcp0st16ox" path="res://placeholders/enemySwimming_2.png" id="4_3fc6j"]
 [ext_resource type="Texture2D" uid="uid://dar5br35fx3x6" path="res://placeholders/ballBlue_10.png" id="4_775sq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1oovi"]
 size = Vector2(108, 132)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qo8mw"]
+radius = 74.4312
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_lqwtf"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_060qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3fc6j")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_d25by")
@@ -35,10 +51,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qo8mw"]
-radius = 74.4312
-
 [node name="player" type="CharacterBody2D"]
+collision_layer = 3
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_t4wjq")
@@ -46,12 +60,6 @@ script = ExtResource("1_t4wjq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_1oovi")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_lqwtf")
-animation = &"walk"
-
-[node name="PlatformDetector" type="RayCast2D" parent="."]
 
 [node name="Bubble" type="CollisionShape2D" parent="."]
 position = Vector2(0, -76)
@@ -61,7 +69,19 @@ shape = SubResource("CircleShape2D_qo8mw")
 position = Vector2(0, 1)
 texture = ExtResource("4_775sq")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lqwtf")
+animation = &"dash"
+
+[node name="PlatformDetector" type="RayCast2D" parent="."]
+
 [node name="DashParticles" type="CPUParticles2D" parent="."]
 local_coords = true
 emission_shape = 1
 emission_sphere_radius = 128.0
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.42
+one_shot = true
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
