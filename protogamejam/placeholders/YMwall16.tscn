@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg1ss2gb1bto"]
+
+[ext_resource type="Texture2D" uid="uid://cgl0y6t4a1ji" path="res://placeholders/YM.png" id="1_fktk8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fn15"]
+size = Vector2(3.04742, 4.0709)
+
+[node name="YMwall" type="StaticBody2D"]
+scale = Vector2(0.08, 0.08)
+collision_layer = 257
+collision_mask = 257
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fktk8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.763593, 4.23193e-06)
+scale = Vector2(63.5052, -47.1814)
+shape = SubResource("RectangleShape2D_7fn15")

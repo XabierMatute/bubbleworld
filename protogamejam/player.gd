@@ -77,9 +77,9 @@ func _process(delta: float) -> void:
 		#$AnimatedSprite2D.play("hit")
 		# debug
 		air = 0
-	print(air)
+	#print(air)
 	$Bubble.scale = Vector2(1 , 1) * get_bubble_stage()
-	print($Bubble.scale)
+	#print($Bubble.scale)
 
 @export var dash = 400
 @export var gravity_scale = 0.42

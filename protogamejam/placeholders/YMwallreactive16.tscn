@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddxte1d1x13k3"]
+[gd_scene load_steps=9 format=3 uid="uid://e31lthfu5yy6"]
 
-[ext_resource type="Texture2D" uid="uid://cgl0y6t4a1ji" path="res://placeholders/YM.png" id="1_avuwf"]
-[ext_resource type="Script" path="res://placeholders/y_mwallreactive.gd" id="1_v880o"]
-[ext_resource type="Texture2D" uid="uid://dt0mbcxyu40s3" path="res://placeholders/cepillos.jpg" id="2_7kdjj"]
-[ext_resource type="Texture2D" uid="uid://kxyiyfasndl7" path="res://placeholders/dinosaurio.jpg" id="3_mvo4p"]
-[ext_resource type="Texture2D" uid="uid://cktvday7v5x2v" path="res://placeholders/paloma.jpg" id="4_xb7gg"]
+[ext_resource type="Script" path="res://placeholders/y_mwallreactive.gd" id="1_q3tp8"]
+[ext_resource type="Texture2D" uid="uid://cgl0y6t4a1ji" path="res://placeholders/YM.png" id="2_vmsq3"]
+[ext_resource type="Texture2D" uid="uid://dt0mbcxyu40s3" path="res://placeholders/cepillos.jpg" id="3_4sr4p"]
+[ext_resource type="Texture2D" uid="uid://kxyiyfasndl7" path="res://placeholders/dinosaurio.jpg" id="4_xymes"]
+[ext_resource type="Texture2D" uid="uid://cktvday7v5x2v" path="res://placeholders/paloma.jpg" id="5_b4wm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fn15"]
 size = Vector2(3.04742, 4.0709)
@@ -16,10 +16,10 @@ size = Vector2(220, 218)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_7kdjj")
+"texture": ExtResource("3_4sr4p")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_avuwf")
+"texture": ExtResource("2_vmsq3")
 }],
 "loop": true,
 "name": &"cepillos",
@@ -27,10 +27,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_mvo4p")
+"texture": ExtResource("4_xymes")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_avuwf")
+"texture": ExtResource("2_vmsq3")
 }],
 "loop": true,
 "name": &"dinosaurio",
@@ -38,10 +38,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_xb7gg")
+"texture": ExtResource("5_b4wm5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_avuwf")
+"texture": ExtResource("2_vmsq3")
 }],
 "loop": true,
 "name": &"paloma",
@@ -49,12 +49,12 @@ animations = [{
 }]
 
 [node name="YMwall" type="StaticBody2D"]
-scale = Vector2(0.08, 0.08)
+scale = Vector2(0.07, 0.07)
 collision_mask = 2
-script = ExtResource("1_v880o")
+script = ExtResource("1_q3tp8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_avuwf")
+texture = ExtResource("2_vmsq3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.763593, 4.23193e-06)
