@@ -25,7 +25,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.air += 50
 		$Area2D/AnimatedSprite2D.play("dinosaurio")
 	else:
-		body.air -= 50
+		#body.air -= 50
+		body.get_hit(50)
 		
 	
 # Cuando un cuerpo sale, revisa si no quedan más cuerpos y pausa la animación.

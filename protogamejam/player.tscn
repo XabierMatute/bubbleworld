@@ -1,16 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://dcfpr5h6neam3"]
+[gd_scene load_steps=18 format=3 uid="uid://dcfpr5h6neam3"]
 
-[ext_resource type="Texture2D" uid="uid://bs75oebvxkwjy" path="res://placeholders/playerGrey_walk1.png" id="1_63gth"]
 [ext_resource type="Script" path="res://player.gd" id="1_t4wjq"]
-[ext_resource type="Texture2D" uid="uid://bu2bwonreucq1" path="res://placeholders/playerGrey_up1.png" id="2_d25by"]
-[ext_resource type="Texture2D" uid="uid://btbh441gngkcr" path="res://placeholders/playerGrey_walk2.png" id="2_hu0ij"]
 [ext_resource type="Texture2D" uid="uid://dea51rsnxvofk" path="res://placeholders/enemySwimming_1.png" id="3_060qi"]
-[ext_resource type="Texture2D" uid="uid://dblibjv7o34dw" path="res://placeholders/playerGrey_up2.png" id="3_ikxjg"]
 [ext_resource type="Texture2D" uid="uid://dbefcp0st16ox" path="res://placeholders/enemySwimming_2.png" id="4_3fc6j"]
 [ext_resource type="Texture2D" uid="uid://dar5br35fx3x6" path="res://placeholders/ballBlue_10.png" id="4_775sq"]
+[ext_resource type="Texture2D" uid="uid://i61g2ktewqlm" path="res://art/player/idle/1.png" id="5_2ynes"]
+[ext_resource type="Texture2D" uid="uid://cxy0xii7frrqy" path="res://art/player/hit/1.png" id="5_y14i8"]
+[ext_resource type="Texture2D" uid="uid://b8cv2rlul1n8q" path="res://art/player/idle/2.png" id="6_j037p"]
+[ext_resource type="Texture2D" uid="uid://vi3v5jk74wf2" path="res://art/player/hit/2.png" id="6_jffqg"]
+[ext_resource type="Texture2D" uid="uid://bosomvrbd5nte" path="res://art/player/idle/3.png" id="7_q71tt"]
+[ext_resource type="Texture2D" uid="uid://lv6c4253nr0d" path="res://art/player/idle/4.png" id="8_w0ge6"]
+[ext_resource type="Texture2D" uid="uid://svr0gtu2cobi" path="res://art/player/idle/5.png" id="9_5a7mh"]
+[ext_resource type="Script" path="res://gancho.gd" id="14_scwqi"]
+[ext_resource type="Texture2D" uid="uid://xrshk7g8baas" path="res://placeholders/gancho.jpg" id="15_temt4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oovi"]
-size = Vector2(108, 132)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wd3bi"]
+radius = 128.813
+height = 670.513
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qo8mw"]
 radius = 74.4312
@@ -30,26 +36,76 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_d25by")
+"texture": ExtResource("5_y14i8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_ikxjg")
+"texture": ExtResource("6_jffqg")
 }],
 "loop": true,
-"name": &"swim",
+"name": &"hit",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_63gth")
+"texture": ExtResource("5_2ynes")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_hu0ij")
+"texture": ExtResource("6_j037p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q71tt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_w0ge6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5a7mh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_w0ge6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q71tt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j037p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2ynes")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j037p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q71tt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_w0ge6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5a7mh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_w0ge6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q71tt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j037p")
 }],
 "loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oovi"]
+size = Vector2(108, 132)
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 3
@@ -57,9 +113,24 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_t4wjq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_1oovi")
+[node name="Gancho" type="RigidBody2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("14_scwqi")
+
+[node name="Sprite" type="Sprite2D" parent="Gancho"]
+position = Vector2(57.2502, -30.4779)
+rotation = 1.16529
+scale = Vector2(0.961024, 0.592301)
+texture = ExtResource("15_temt4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gancho"]
+shape = SubResource("CapsuleShape2D_wd3bi")
+
+[node name="RayCast2D" type="RayCast2D" parent="Gancho"]
+target_position = Vector2(50, 50)
+collision_mask = 256
 
 [node name="Bubble" type="CollisionShape2D" parent="."]
 position = Vector2(0, -76)
@@ -70,8 +141,11 @@ position = Vector2(0, 1)
 texture = ExtResource("4_775sq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-11, -91)
+scale = Vector2(-0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_lqwtf")
-animation = &"dash"
+animation = &"walk"
+autoplay = "idle"
 
 [node name="PlatformDetector" type="RayCast2D" parent="."]
 
@@ -84,4 +158,14 @@ emission_sphere_radius = 128.0
 wait_time = 0.42
 one_shot = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_1oovi")
+
+[node name="HitTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Gancho" to="Gancho" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="Gancho" to="Gancho" method="_on_body_shape_entered"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

@@ -6,6 +6,8 @@
 size = Vector2(3.04742, 4.0709)
 
 [node name="YMwall" type="StaticBody2D"]
+collision_layer = 257
+collision_mask = 257
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_hlaxk")
