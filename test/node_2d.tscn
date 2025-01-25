@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqw0kfpw8i2bx"]
+
+[ext_resource type="AudioStream" uid="uid://cpik4gj6h5mgd" path="res://DavidKBD - InterstellarPack - 01 - Interstellar.ogg" id="1_n3k5f"]
+[ext_resource type="Script" path="res://audio_manager.gd" id="1_plkov"]
+[ext_resource type="AudioStream" uid="uid://bivmjxx4h4hhh" path="res://DavidKBD - Eternity Pack - 01 - The desolation of a civilization - oneshoot.ogg" id="2_kgdpg"]
+[ext_resource type="PackedScene" uid="uid://dbtgcdgo2b8xh" path="res://enemy_1.tscn" id="4_fkluw"]
+[ext_resource type="PackedScene" uid="uid://cdlkvpchqocwo" path="res://enemy_2.tscn" id="5_p44he"]
+[ext_resource type="PackedScene" uid="uid://7rtql7chaedf" path="res://enemy_3.tscn" id="6_ofne1"]
+
+[node name="Node2D" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_plkov")
+
+[node name="Audio" type="Node" parent="."]
+process_mode = 1
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("2_kgdpg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("1_n3k5f")
+
+[node name="Enemy1" parent="." instance=ExtResource("4_fkluw")]
+visible = false
+
+[node name="Enemy2" parent="." instance=ExtResource("5_p44he")]
+visible = false
+
+[node name="Enemy3" parent="." instance=ExtResource("6_ofne1")]
+visible = false
+position = Vector2(275, 145)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+process_mode = 3
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/shadow_outline_size = 50
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+threaded = true
+visible_characters_behavior = 1
+
+[node name="ESC" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="ESC"]
+process_mode = 2
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="GridContainer" type="GridContainer" parent="ESC/CenterContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 25
+
+[node name="Button" type="Button" parent="ESC/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+text = "RETURN"
+
+[node name="Button2" type="Button" parent="ESC/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+text = "EXIT"
