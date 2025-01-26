@@ -25,7 +25,6 @@ func shoot_bullet() -> void:
 	get_parent().add_child(bullet)  # Añade la bala al nodo padre
 	bullet.position =  position  # Coloca la bala en la posición del objeto
 	bullet.rotation = rotation  # Ajusta la dirección de disparo
-	bullet.scale *= 10
 	# Aplica una fuerza inicial a la bala
 	if bullet.has_method("set_speed"):
 		bullet.set_speed(bullet_speed)

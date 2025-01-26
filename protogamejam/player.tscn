@@ -92,6 +92,35 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 0.5,
+"texture": ExtResource("7_esgnd")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_g1vgy")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_wjanv")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_6lxa3")
+}, {
+"duration": 0.5,
+"texture": ExtResource("11_v47ut")
+}, {
+"duration": 0.5,
+"texture": ExtResource("12_iyx1h")
+}, {
+"duration": 0.5,
+"texture": ExtResource("13_0ujpq")
+}, {
+"duration": 0.5,
+"texture": ExtResource("14_ed8so")
+}],
+"loop": false,
+"name": &"dash_in",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_y14i8")
 }, {
@@ -195,8 +224,6 @@ scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_lqwtf")
 animation = &"dash"
 autoplay = "idle"
-frame = 14
-frame_progress = 1.0
 
 [node name="PlatformDetector" type="RayCast2D" parent="."]
 
