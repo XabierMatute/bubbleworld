@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dysqniv40186w"]
+[gd_scene load_steps=19 format=4 uid="uid://dysqniv40186w"]
 
 [ext_resource type="PackedScene" uid="uid://dcfpr5h6neam3" path="res://player.tscn" id="1_f7i2f"]
 [ext_resource type="Script" path="res://label.gd" id="2_pty8b"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cg1ss2gb1bto" path="res://placeholders/YMwall16.tscn" id="8_xi0g5"]
 [ext_resource type="PackedScene" uid="uid://e31lthfu5yy6" path="res://placeholders/YMwallreactive16.tscn" id="9_a7lgs"]
 [ext_resource type="PackedScene" uid="uid://crvgfeeni3hl0" path="res://rompible.tscn" id="10_6h13s"]
+[ext_resource type="PackedScene" uid="uid://dfnn6pqf1u4mt" path="res://enemies/anemona.tscn" id="11_8r5ol"]
+[ext_resource type="PackedScene" uid="uid://dda8ou0lky8j1" path="res://enemies/crab.tscn" id="12_wl27h"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gw6ro"]
 
@@ -192,3 +194,12 @@ position = Vector2(1388, 1261)
 
 [node name="YMwall11" parent="." instance=ExtResource("5_onnys")]
 position = Vector2(-157, 1076)
+
+[node name="Anemona" parent="." instance=ExtResource("11_8r5ol")]
+position = Vector2(6859, 15)
+
+[node name="Crab" parent="." instance=ExtResource("12_wl27h")]
+position = Vector2(7562, 294)
+
+[node name="Crab2" parent="." instance=ExtResource("12_wl27h")]
+position = Vector2(5144, -88)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfnn6pqf1u4mt"]
+[gd_scene load_steps=7 format=3 uid="uid://dfnn6pqf1u4mt"]
 
 [ext_resource type="Script" path="res://anemona.gd" id="1_0uxfb"]
 [ext_resource type="PackedScene" uid="uid://ds3tfy2ud3ltp" path="res://bullet.tscn" id="2_fbc1h"]
@@ -9,6 +9,8 @@ radius = 10.0499
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upe2y"]
 size = Vector2(24, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v7hbc"]
 
 [node name="Anemona" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -33,6 +35,9 @@ collision_mask = 2
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_upe2y")
 debug_color = Color(0.893693, 0.23255, 0.560983, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v7hbc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
