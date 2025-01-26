@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpesv43wmu8uu"]
+[gd_scene load_steps=7 format=3 uid="uid://dpesv43wmu8uu"]
 
 [ext_resource type="PackedScene" uid="uid://dcfpr5h6neam3" path="res://player.tscn" id="1_h07vp"]
 [ext_resource type="Script" path="res://testchamber_2.gd" id="1_t0h2f"]
 [ext_resource type="Script" path="res://label.gd" id="2_xk8y4"]
 [ext_resource type="Texture2D" uid="uid://cgl0y6t4a1ji" path="res://placeholders/YM.png" id="3_1oim6"]
 [ext_resource type="PackedScene" uid="uid://dneep5u6jeulg" path="res://placeholders/YMwall.tscn" id="4_up50d"]
-[ext_resource type="PackedScene" uid="uid://dda8ou0lky8j1" path="res://enemies/crab.tscn" id="6_0qanl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tto36"]
 size = Vector2(866, 101)
@@ -44,6 +43,3 @@ position = Vector2(328, -71)
 
 [node name="YMwall2" parent="." instance=ExtResource("4_up50d")]
 position = Vector2(-272, 147)
-
-[node name="Crab" parent="." instance=ExtResource("6_0qanl")]
-position = Vector2(420, 145)

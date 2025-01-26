@@ -1,19 +1,57 @@
-[gd_scene load_steps=4 format=3 uid="uid://dda8ou0lky8j1"]
+[gd_scene load_steps=9 format=3 uid="uid://bm8ux7awjfwuy"]
 
 [ext_resource type="Script" path="res://enemies/crab.gd" id="1_rsrox"]
-[ext_resource type="Texture2D" uid="uid://c2ufrbsnr02w6" path="res://placeholders/crab.webp" id="2_nonqr"]
+[ext_resource type="Texture2D" uid="uid://yqsk5c0mdyv1" path="res://art/Enemies/Cangrejo/crab.png" id="2_wr11g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvmu7"]
 radius = 21.0093
 height = 74.0169
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6re3"]
+atlas = ExtResource("2_wr11g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdbt0"]
+atlas = ExtResource("2_wr11g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmbod"]
+atlas = ExtResource("2_wr11g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldqyv"]
+atlas = ExtResource("2_wr11g")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scfh7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6re3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdbt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmbod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldqyv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Crab" type="RigidBody2D"]
 script = ExtResource("1_rsrox")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(14, -37)
-texture = ExtResource("2_nonqr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.58125
 shape = SubResource("CapsuleShape2D_cvmu7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -56)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_scfh7")
+frame_progress = 0.419516

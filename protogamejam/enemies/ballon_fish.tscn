@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://bicnc37r214cy"]
+
+[ext_resource type="Script" path="res://ballon_fish.gd" id="1_26ltx"]
+[ext_resource type="Texture2D" uid="uid://b5oya65epwgp8" path="res://art/Enemies/PezGlobo/PEZGLOBO.png" id="3_5wxr0"]
+[ext_resource type="PackedScene" uid="uid://cwvxxl7185rye" path="res://bullet_2.tscn" id="4_ts55w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_prxmj"]
+radius = 10.0499
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irr5w"]
+size = Vector2(24, 21.2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mom5"]
+atlas = ExtResource("3_5wxr0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v26gw"]
+atlas = ExtResource("3_5wxr0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdkhl"]
+atlas = ExtResource("3_5wxr0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrvw7"]
+atlas = ExtResource("3_5wxr0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0igdt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mom5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v26gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdkhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrvw7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BallonFish" type="RigidBody2D"]
+position = Vector2(674, 183)
+gravity_scale = 0.0
+script = ExtResource("1_26ltx")
+bullet_scene = ExtResource("4_ts55w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(8, 8)
+shape = SubResource("CircleShape2D_prxmj")
+metadata/_edit_lock_ = true
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 24)
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_irr5w")
+debug_color = Color(0.893693, 0.23255, 0.560983, 0.42)
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 8)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_0igdt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

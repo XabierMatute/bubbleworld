@@ -23,11 +23,34 @@ var looking_left = false
 
 var dashing = false
 
+var SoftMusic
+var HardMusic
+var SoundHit
+var SoundKill
+
 func _ready() -> void:
+	SoftMusic = $"../SoftMusic"
+	HardMusic = $"../HadMusic"
+	SoundHit = $"../Hit"
+	SoundKill = $"../Kill"
+	SoundHit.play(0)
+	init_music()
 	alive = true
 	air = initial_air
 	$Bubble.scale *= num_of_stage
 	$AnimatedSprite2D.animation = "walk"
+	var anim = $Bubble/AnimatedSprite2D
+	anim.play()
+	
+	var grid_container = $"../ESC/CenterContainer/GridContainer"
+	var id = -1
+	for button in grid_container.get_children():
+		if button is Button:
+			id += 1
+			if (id == 0):
+				button.pressed.connect(self._return)
+			elif (id == 1):
+				button.pressed.connect(self._exit)
 
 func get_bubble_percentage():
 	return float(air) / initial_air
@@ -68,22 +91,36 @@ func get_hit(damage):
 	$HitTimer.start()
 	air -= damage
 	hitted = true
+	set_soft_m()
+	SoundHit.play(0)
+	
 	
 func get_heal(heal):
 	air += heal
+	set_hard_m()
+	SoundKill.play(0)
 
 func _process(delta: float) -> void:
 	handle_animation()
 	air -= air_decrement  * delta
+	if air > 60:
+		air = 60
 	if air < 0:
 		air = 0
 		emit_signal("popped")
+		#################
+		#################
+		while dashing == true:
+			await get_tree().create_timer(1).timeout
+		get_tree().change_scene_to_file("res://testchamber_5.tscn")
+		#################
+		#################
 		#get_hit()
 		#$AnimatedSprite2D.play("hit")
 		# debug
 		air = 0
 	#print(air)
-	$Bubble.scale = Vector2(1 , 1) * get_bubble_stage()
+	$Bubble.scale = Vector2(1 , 1) * (get_bubble_stage() / 2)
 	#print($Bubble.scale)
 
 @export var gravity_scale = 0.42
@@ -131,6 +168,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("gancho"):
 		trow_gancho()
 
+	if (Input.is_key_pressed(KEY_ESCAPE)):
+		var Menu = $"../ESC/CenterContainer"
+		if (!Menu.is_visible()):
+			Menu.show()
+			get_tree().set_pause(true)
+		else:
+			Menu.hide()
+			get_tree().set_pause(false)
+
 	move_and_slide()
 
 func trow_gancho():
@@ -156,3 +202,32 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if not dashing:
 		return
 	_on_dash_timer_timeout()
+
+
+func _on_anemonadown_body_entered(body: Node) -> void:
+	pass # Replace with function body.
+
+
+func _on_ballon_fish_body_entered(body: Node) -> void:
+	pass # Replace with function body.
+
+func init_music():
+	SoftMusic.play(0)
+	HardMusic.play(0)
+	HardMusic.set_volume_db(-100)
+
+func set_soft_m():
+	SoftMusic.set_volume_db(0)
+	HardMusic.set_volume_db(-100)
+	
+func set_hard_m():
+	HardMusic.set_volume_db(0)
+	SoftMusic.set_volume_db(-100)
+
+func _return():
+	var Menu = $"../ESC/CenterContainer"
+	Menu.hide()
+	get_tree().set_pause(false)
+
+func _exit():
+	get_tree().quit()

@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://dpjxesu3y01yf"]
+
+[ext_resource type="Script" path="res://anemona_left.gd" id="1_8cwqo"]
+[ext_resource type="Texture2D" uid="uid://ksy0y0dgl52x" path="res://art/Enemies/Anemona/anemona.png" id="2_qp33c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xxgu"]
+atlas = ExtResource("2_qp33c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r40ga"]
+atlas = ExtResource("2_qp33c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g23np"]
+atlas = ExtResource("2_qp33c")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01qie"]
+atlas = ExtResource("2_qp33c")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkm6w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xxgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r40ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g23np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01qie")
+}],
+"loop": true,
+"name": &"anemonaidle",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ipdeh"]
+radius = 10.0499
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upe2y"]
+size = Vector2(24, 21.2)
+
+[node name="Anemona" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_8cwqo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_jkm6w")
+animation = &"anemonaidle"
+frame_progress = 0.0778281
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(8, 8)
+shape = SubResource("CircleShape2D_ipdeh")
+metadata/_edit_lock_ = true
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 24)
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_upe2y")
+debug_color = Color(0.893693, 0.23255, 0.560983, 0.42)
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwvxxl7185rye"]
+
+[ext_resource type="Script" path="res://enemies/bullet_2.gd" id="1_hdtib"]
+[ext_resource type="Texture2D" uid="uid://durv2xq4a4e8g" path="res://art/Enemies/bala_globo.png" id="2_m8lww"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h3ply"]
+radius = 2.0
+
+[node name="Bullet 2" type="Area2D"]
+scale = Vector2(10, 10)
+script = ExtResource("1_hdtib")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("2_m8lww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_h3ply")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

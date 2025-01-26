@@ -1,17 +1,16 @@
 extends RigidBody2D
 
 # Variables de movimiento
-var speed: float = 200  # Velocidad de movimiento
+var speed: float = 20  # Velocidad de movimiento
 var direction: int = 1  # Dirección del movimiento, 1 hacia la derecha, -1 hacia la izquierda
 
 # Límites de movimiento
-var left_limit: float = -300  # Límite izquierdo
-var right_limit: float = 300  # Límite derecho
+var left_limit: float = -20  # Límite izquierdo
+var right_limit: float = 20  # Límite derecho
 
 # Se llama cuando el nodo entra en la escena
 func _ready() -> void:
-	pass
-	position.x = left_limit  # Inicializar en el límite izquierdo
+	$AnimatedSprite2D.play("default")
 
 # Se llama cada frame
 func _process(delta: float) -> void:

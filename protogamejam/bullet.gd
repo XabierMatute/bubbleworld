@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed: float = 500.0  # Velocidad inicial
-@export var damage: int = 30  # Daño que inflige la bala
+@export var damage: int = 5  # Daño que inflige la bala
 
 signal shooted  # Señal para disparo (opcional, puedes eliminarla si no la usas)
 

@@ -1,11 +1,13 @@
-[gd_scene load_steps=36 format=3 uid="uid://dcfpr5h6neam3"]
+[gd_scene load_steps=39 format=3 uid="uid://dcfpr5h6neam3"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_t4wjq"]
-[ext_resource type="Texture2D" uid="uid://dar5br35fx3x6" path="res://placeholders/ballBlue_10.png" id="4_775sq"]
+[ext_resource type="Texture2D" uid="uid://duoardj3jpcs4" path="res://art/BUBBLE/b1.png" id="4_k3r1w"]
 [ext_resource type="Texture2D" uid="uid://i61g2ktewqlm" path="res://art/player/idle/1.png" id="5_2ynes"]
+[ext_resource type="Texture2D" uid="uid://d00s08nbuxy7d" path="res://art/BUBBLE/b2.png" id="5_sjps7"]
 [ext_resource type="Texture2D" uid="uid://cxy0xii7frrqy" path="res://art/player/hit/1.png" id="5_y14i8"]
 [ext_resource type="Texture2D" uid="uid://b8cv2rlul1n8q" path="res://art/player/idle/2.png" id="6_j037p"]
 [ext_resource type="Texture2D" uid="uid://vi3v5jk74wf2" path="res://art/player/hit/2.png" id="6_jffqg"]
+[ext_resource type="Texture2D" uid="uid://j1ido0j1w8er" path="res://art/BUBBLE/b3.png" id="6_vces5"]
 [ext_resource type="Texture2D" uid="uid://coe6vfiyueklq" path="res://art/player/dash/1.png" id="7_esgnd"]
 [ext_resource type="Texture2D" uid="uid://bosomvrbd5nte" path="res://art/player/idle/3.png" id="7_q71tt"]
 [ext_resource type="Texture2D" uid="uid://bgn3m3edyivj" path="res://art/player/dash/2.png" id="8_g1vgy"]
@@ -38,6 +40,23 @@ height = 670.513
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qo8mw"]
 radius = 74.4312
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndwss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_k3r1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sjps7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vces5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lqwtf"]
 animations = [{
@@ -89,35 +108,6 @@ animations = [{
 }],
 "loop": false,
 "name": &"dash",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 0.5,
-"texture": ExtResource("7_esgnd")
-}, {
-"duration": 0.5,
-"texture": ExtResource("8_g1vgy")
-}, {
-"duration": 0.5,
-"texture": ExtResource("9_wjanv")
-}, {
-"duration": 0.5,
-"texture": ExtResource("10_6lxa3")
-}, {
-"duration": 0.5,
-"texture": ExtResource("11_v47ut")
-}, {
-"duration": 0.5,
-"texture": ExtResource("12_iyx1h")
-}, {
-"duration": 0.5,
-"texture": ExtResource("13_0ujpq")
-}, {
-"duration": 0.5,
-"texture": ExtResource("14_ed8so")
-}],
-"loop": false,
-"name": &"dash_in",
 "speed": 5.0
 }, {
 "frames": [{
@@ -189,6 +179,7 @@ collision_layer = 3
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_t4wjq")
+dash_air_cosumption = 10
 dash_velocity = 2000
 
 [node name="Gancho" type="RigidBody2D" parent="."]
@@ -214,16 +205,20 @@ collision_mask = 256
 position = Vector2(0, -76)
 shape = SubResource("CircleShape2D_qo8mw")
 
-[node name="Sprite2D" type="Sprite2D" parent="Bubble"]
-position = Vector2(0, 1)
-texture = ExtResource("4_775sq")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bubble"]
+position = Vector2(57.5, 16.125)
+scale = Vector2(0.334896, 0.353935)
+sprite_frames = SubResource("SpriteFrames_ndwss")
+frame_progress = 0.5969
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-11, -91)
+position = Vector2(31, -89)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_lqwtf")
 animation = &"dash"
 autoplay = "idle"
+frame = 14
+frame_progress = 1.0
 
 [node name="PlatformDetector" type="RayCast2D" parent="."]
 
