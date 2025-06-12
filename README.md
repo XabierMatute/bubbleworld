@@ -70,6 +70,19 @@ The game revolves around a player navigating a bubble-themed world, interacting 
 2. Open the project in **Godot Engine**.
 3. Run the main scene or deploy the game using the provided web interface.
 
+## Play or Download
+
+You can play or download the game at **[https://recursivelover.itch.io/youdrown](https://recursivelover.itch.io/youdrown)**.
+
+## Game Jam Page
+
+Visit the official **Global Game Jam 2025** page for this project at **[https://globalgamejam.org/games/2025/you-drown-7](https://globalgamejam.org/games/2025/you-drown-7)**.
+
 ## Acknowledgments
 
 This project was created as part of the **Global Game Jam 2025**. Special thanks to the Godot Engine community for their support and resources.
+
+Special thanks to:
+- **Maia Lorente** for her incredible art.
+- **Mikel Asla** for his help with the code and music. You can find his GitHub profile at **[https://github.com/masla-la](https://github.com/masla-la)**.
+- **Jacob Lightfoot** for his creative direction and contributions to the music.
